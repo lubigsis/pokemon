@@ -20,7 +20,7 @@ pokemon3.vida = 100
 pokemon4.vida = 100
 turno = tirar_dado(2) #un dado de 2 caras   
 
-#--------------------------------------------------------------------------------------------------------------
+
 #------------------------------------------------------------INICIO--------------------------------------------
 print('Hola, jugador. Elige tu Pokémon y ¡prepárate para el combate!\n\n')
 time.sleep(2)
@@ -36,6 +36,26 @@ time.sleep(2)
 print('Elijo la opción número:')
 respuestaJugador = int(input())
 
+#------------------------------------
+listaOpciones = [1, 2, 3, 4]
+listaOpciones.remove(respuestaJugador) #saco la opción q eligió el jugador p/q la pc elija dentro de las que quedan
+
+#--------------------------------------------pongo el turno de pc aleatorio
+print(listaOpciones)
+pcPlays = random.choice(listaOpciones)
+print(pcPlays)
+
+if pcPlays == 1:
+    pcPlays = pokemon1.nombre
+elif pcPlays == 2:
+    pcPlays = pokemon2.nombre
+elif pcPlays == 3:
+    pcPlays = pokemon3.nombre 
+elif pcPlays == 4:
+    pcPlays = pokemon4.nombre
+
+
+#-----------------------------------------------opcion que eligió  el jugador
 if respuestaJugador == 1:
     respuestaJugador = pokemon1.nombre
 elif respuestaJugador == 2:
@@ -47,9 +67,11 @@ elif respuestaJugador == 4:
   
 
 
+#----------------------------------------------
+
 print('¡Ha iniciado la batalla!\n'.upper())
 time.sleep(2)
-print(f'{respuestaJugador} se enfrenta a {pokemon2.nombre}\n')
+print(f'{respuestaJugador} se enfrenta a {pcPlays}\n')
 
 #------------------------------ciclo de ataque por turnos-------------------------
 while pokemon1.vida > 0 and pokemon2.vida > 0:
@@ -78,7 +100,7 @@ else:
     pokemon1.gano()
 
 
-#Poner opcion random para pc y que no sea la opción que eligió el jugador.
+
 #Agregar un ciclo infinito que nos permita iniciar más batallas
 #quitar el 'próxima ronda' del final
 #------------------------
